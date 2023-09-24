@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_tdd_clean_test/features/number_trivia/domain/entities/number_trivia.dart';
 
 class NumberTriviaModel extends NumberTrivia {
@@ -23,5 +21,14 @@ class NumberTriviaModel extends NumberTrivia {
       found: json['found'], //bool
       type: json['type'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'text': text,
+      'number': number,
+      'found': found,
+      'type': type,
+    };
   }
 }

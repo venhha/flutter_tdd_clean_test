@@ -10,38 +10,30 @@ environment:
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`
 # To see which dependencies have newer versions available, run `flutter pub outdated`.
-
 dependencies:
+  build_runner: ^2.4.6
+  connectivity_plus: ^4.0.2
+  cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  dio: ^5.3.2
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
-
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  # A library for parsing, formatting, and manipulating HTML documents.
+  http: ^1.1.0
+  internet_connection_checker: ^1.0.0+1
+  logger: ^2.0.2+1
   mockito: ^5.4.2
-  # helps to implement value based equality without needing to explicitly override == and hashCode.
-  equatable: ^2.0.5
-  # Functional programming in Dart
-  dartz: ^0.10.1
-  # Flutter plugin for discovering the state of the network (WiFi & mobile/cellular)
-  # connectivity on Android and iOS.
-  connectivity_plus: ^4.0.2
-  # Retrofit is a type-safe HTTP client for Dart, with support for JSON serialization,
-  # and logging. It works on both the VM and in the browser.
   retrofit: ^4.0.1
-  # A powerful HTTP networking package, supports Interceptors,
-  # Aborting and canceling a request, Custom adapters, Transformers, etc.
-  dio: ^5.3.2
-  build_runner: ^2.4.6
+  shared_preferences: ^2.2.1
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml`.
   flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
   # A simple logger for Dart and Flutter.
   logger: ^2.0.2
 
@@ -51,18 +43,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
