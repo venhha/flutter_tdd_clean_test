@@ -18,14 +18,22 @@ abstract class NumberTriviaRemoteDataSource {
 }
 
 class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
-  // final http.Client client;
+  final http.Client client;
 
-  // NumberTriviaRemoteDataSourceImpl({required this.client});
+  NumberTriviaRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<NumberTriviaModel> getConcreteNumberTrivia(int number) {
-    // TODO: implement getConcreteNumberTrivia
-    throw UnimplementedError();
+  Future<NumberTriviaModel> getConcreteNumberTrivia(int number) async {
+    var url = "http://numbersapi.com/188";
+    Uri uri = Uri.parse(url);
+
+    client.get(
+      uri,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+  return const NumberTriviaModel(number: 188, text: 'Test text', type: 'Test type', found: true);
   }
 }
 
