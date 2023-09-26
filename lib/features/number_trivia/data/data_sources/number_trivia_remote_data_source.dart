@@ -6,7 +6,7 @@ import '../../../../core/error/exceptions.dart';
 import '../models/number_trivia_model.dart';
 
 abstract class NumberTriviaRemoteDataSource {
-  /// Calls the http://numbersapi.com/{number} endpoint.
+  /// Calls the http://numbersapi.com/{number} endpoint and return [NumberTriviaModel].
   ///
   /// Throws a [ServerException] for all error codes.
   Future<NumberTriviaModel> getConcreteNumberTrivia(int number);
@@ -23,17 +23,37 @@ class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
   NumberTriviaRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<NumberTriviaModel> getConcreteNumberTrivia(int number) async {
-    var url = "http://numbersapi.com/188";
-    Uri uri = Uri.parse(url);
+  Future<NumberTriviaModel> getConcreteNumberTrivia(int number) =>
+      _getNumberTriviaFromUrl('http://numbersapi.com/$number?json');
 
-    client.get(
-      uri,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    );
-  return const NumberTriviaModel(number: 188, text: 'Test text', type: 'Test type', found: true);
+  Future<NumberTriviaModel> _getNumberTriviaFromUrl(String url) async {
+    try {
+      Uri uri = Uri.parse(url);
+
+      var res = await client.get(
+        uri, //the url passed in the function
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+
+      if (res.statusCode == 200) {
+        Map<String, dynamic> jsonMap = json.decode(res.body);
+        if (jsonMap['found'] == false) {
+          return NumberTriviaModel(
+              text: jsonMap['text'],
+              number: jsonMap['number'],
+              found: false,
+              type: "trivia");
+        } else {
+          return NumberTriviaModel.fromJson(jsonMap);
+        }
+      } else {
+        throw ServerException("Error with Code ${res.statusCode}");
+      }
+    } catch (e) {
+      throw ServerException();
+    }
   }
 }
 

@@ -15,8 +15,6 @@ class FailureMessage extends Failure {
 
   FailureMessage([this.message = 'Something went wrong!!!']);
 
-  get getMessage => message;
-
   @override
   List<Object> get props => [message];
 }

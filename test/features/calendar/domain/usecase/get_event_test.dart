@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_tdd_clean_test/features/calendar/domain/entities/event_entity.dart';
 import 'package:flutter_tdd_clean_test/features/calendar/domain/repository/event_repository.dart';
 import 'package:flutter_tdd_clean_test/features/calendar/domain/usecase/get_event.dart';
-import 'package:logger/logger.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';

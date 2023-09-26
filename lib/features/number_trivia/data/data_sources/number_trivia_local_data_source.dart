@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter_tdd_clean_test/core/error/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:logger/logger.dart';
 import '../models/number_trivia_model.dart';
 
 const CACHED_NUMBER_TRIVIA = 'CACHED_NUMBER_TRIVIA';

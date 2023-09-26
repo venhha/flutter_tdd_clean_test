@@ -11,31 +11,28 @@ environment:
 # consider running `flutter pub upgrade --major-versions`
 # To see which dependencies have newer versions available, run `flutter pub outdated`.
 dependencies:
+  retrofit: ^4.0.1
+  shared_preferences: ^2.2.1
+  bloc: ^8.1.2
   build_runner: ^2.4.6
   connectivity_plus: ^4.0.2
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.3.2
   equatable: ^2.0.5
-  flutter:
-    sdk: flutter
   http: ^1.1.0
   internet_connection_checker: ^1.0.0+1
-  logger: ^2.0.2+1
-  mockito: ^5.4.2
-  retrofit: ^4.0.1
-  shared_preferences: ^2.2.1
+  flutter:
+    sdk: flutter
+  
 
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml`.
-  flutter_lints: ^2.0.0
+  bloc_test: ^9.1.4
+  mockito: ^5.4.2
+  logger: ^2.0.2+1
+  flutter_lints: ^2.0.3
   flutter_test:
     sdk: flutter
-  # A simple logger for Dart and Flutter.
-  logger: ^2.0.2
 
 # The following section is specific to Flutter packages.
 flutter:
