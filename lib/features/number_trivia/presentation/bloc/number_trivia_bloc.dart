@@ -1,13 +1,12 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tdd_clean_test/core/helpers/input_convertor.dart';
 import 'package:flutter_tdd_clean_test/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:flutter_tdd_clean_test/features/number_trivia/domain/usecase/get_concrete_number_trivia.dart';
-
 part 'number_trivia_event.dart';
 part 'number_trivia_state.dart';
 
-const String kInputInvalidFailureMessage = 'Invalid Input';
+const String kInputInvalidFailureMessage = 'Invalid Input - You must enter a positive integer';
 const String kServerFailureMessage = 'Server Input';
 const String kCacheFailureMessage = 'Cache Input';
 
@@ -25,7 +24,7 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
         final inputEither =
             _inputConvertor.stringToUnsignedInteger(event.numberString);
 
-        inputEither.fold(
+        await inputEither.fold(
           (inputFailure) {
             emit(const ErrorState(message: kInputInvalidFailureMessage));
           },

@@ -7,13 +7,9 @@ abstract class NetworkInfo {
 }
 
 class NetworkInfoImpl implements NetworkInfo {
-  final Connectivity connectivity;
-
-  NetworkInfoImpl(this.connectivity);
-
   @override
   Future<bool> get isConnectedByConnectivity async {
-    final connectivityResult = await connectivity.checkConnectivity();
+    final connectivityResult = await Connectivity().checkConnectivity();
     return connectivityResult != ConnectivityResult.none;
   }
 

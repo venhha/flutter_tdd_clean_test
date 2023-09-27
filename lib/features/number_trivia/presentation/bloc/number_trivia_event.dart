@@ -1,6 +1,6 @@
 part of 'number_trivia_bloc.dart';
 
-sealed class NumberTriviaEvent extends Equatable {
+abstract class NumberTriviaEvent extends Equatable {
   const NumberTriviaEvent();
 
   @override
