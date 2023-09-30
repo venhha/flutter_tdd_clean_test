@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_tdd_clean_test/core/error/failures.dart';
-import 'package:flutter_tdd_clean_test/core/usecase/usecase.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/domain/entities/number_trivia.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/domain/repository/number_trivia_repository.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../entities/number_trivia.dart';
+import '../repository/number_trivia_repository.dart';
 
 class GetConcreteNumberTriviaUseCase implements UseCase<NumberTrivia, int> {
   final NumberTriviaRepository repository;

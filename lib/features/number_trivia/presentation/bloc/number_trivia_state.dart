@@ -10,6 +10,7 @@ abstract class NumberTriviaState extends Equatable {
 final class EmptyState extends NumberTriviaState {}
 
 final class LoadingState extends NumberTriviaState {}
+
 final class LoadedState extends NumberTriviaState {
   final NumberTrivia trivia;
 

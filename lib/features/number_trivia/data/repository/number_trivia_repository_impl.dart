@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_tdd_clean_test/core/error/exceptions.dart';
-import 'package:flutter_tdd_clean_test/core/error/failures.dart';
-import 'package:flutter_tdd_clean_test/core/network/network_info.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/data/data_sources/number_trivia_local_data_source.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/data/data_sources/number_trivia_remote_data_source.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/data/models/number_trivia_model.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/domain/entities/number_trivia.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/domain/repository/number_trivia_repository.dart';
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/network/network_info.dart';
+import '../data_sources/number_trivia_local_data_source.dart';
+import '../data_sources/number_trivia_remote_data_source.dart';
+import '../models/number_trivia_model.dart';
+import '../../domain/entities/number_trivia.dart';
+import '../../domain/repository/number_trivia_repository.dart';
 
 class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
   final NumberTriviaRemoteDataSource remoteDataSource;
@@ -41,7 +41,7 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
         localDataSource.cacheNumberTrivia(remoteNumberTriviaModel);
         return Right(remoteNumberTriviaModel);
       } on ServerException {
-        return Left(ServerFailure());
+        return const Left(ServerFailure());
       }
     } else {
       try {
@@ -49,7 +49,7 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
             await localDataSource.getLastNumberTrivia();
         return Right(localNumberTriviaModel);
       } on CacheException {
-        return Left(CacheFailure());
+        return const Left(CacheFailure());
       }
     }
   }

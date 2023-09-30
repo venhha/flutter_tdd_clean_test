@@ -1,12 +1,16 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_tdd_clean_test/core/helpers/input_convertor.dart';
-import 'package:flutter_tdd_clean_test/core/network/network_info.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/data/data_sources/number_trivia_local_data_source.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/data/data_sources/number_trivia_remote_data_source.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/data/repository/number_trivia_repository_impl.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/domain/repository/number_trivia_repository.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/domain/usecase/get_concrete_number_trivia.dart';
-import 'package:flutter_tdd_clean_test/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
+import 'package:flutter_tdd_clean_test/features/news/data/data_sources/remote/news_remote_datasource.dart';
+import 'package:flutter_tdd_clean_test/features/news/data/repository/article_repository_impl.dart';
+import 'package:flutter_tdd_clean_test/features/news/domain/repository/article_repository.dart';
+import 'package:flutter_tdd_clean_test/features/news/domain/usecase/get_article.dart';
+import 'core/helpers/input_convertor.dart';
+import 'core/network/network_info.dart';
+import 'features/number_trivia/data/data_sources/number_trivia_local_data_source.dart';
+import 'features/number_trivia/data/data_sources/number_trivia_remote_data_source.dart';
+import 'features/number_trivia/data/repository/number_trivia_repository_impl.dart';
+import 'features/number_trivia/domain/repository/number_trivia_repository.dart';
+import 'features/number_trivia/domain/usecase/get_concrete_number_trivia.dart';
+import 'features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +23,7 @@ Future<void> initLocator() async {
 
   // Use cases
   sl.registerLazySingleton(() => GetConcreteNumberTriviaUseCase(sl()));
+  sl.registerLazySingleton(() => GetArticle(sl()));
 
   // Repository
   sl.registerLazySingleton<NumberTriviaRepository>(
@@ -27,6 +32,10 @@ Future<void> initLocator() async {
             networkInfo: sl(),
             remoteDataSource: sl(),
           ));
+  sl.registerLazySingleton<ArticleRepository>(() => ArticleRepositoryImpl(
+        networkInfo: sl(),
+        newsRemoteDataSource: sl(),
+      ));
 
   // Data sources
   sl.registerLazySingleton<NumberTriviaRemoteDataSource>(
@@ -34,6 +43,9 @@ Future<void> initLocator() async {
 
   sl.registerLazySingleton<NumberTriviaLocalDataSource>(
       () => NumberTriviaLocalDataSourceImpl(sharedPreferences: sl()));
+
+  sl.registerLazySingleton<NewsRemoteDataSource>(
+      () => NewsRemoteDataSourceImpl(client: sl()));
 
   //! Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());

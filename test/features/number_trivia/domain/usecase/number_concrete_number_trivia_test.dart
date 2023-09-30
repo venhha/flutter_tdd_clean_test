@@ -19,7 +19,7 @@ void main() {
         usecase = GetConcreteNumberTriviaUseCase(mockNumberTriviaRepository)
       });
 
-  NumberTrivia tNumberTrivia = NumberTrivia(number: 1, text: 'test');
+  NumberTrivia tNumberTrivia = const NumberTrivia(number: 1, text: 'test');
 
   group('usecase GetConcreteNumberTrivia test', () {
     test('should return [NumberTrivia] when call GetConcreteNumberTrivia',
@@ -40,12 +40,12 @@ void main() {
         () async {
       //Arrange
       when(mockNumberTriviaRepository.getConcreteNumberTrivia(any)).thenAnswer(
-          (_) async => Left(FailureMessage('invalid input')));
+          (_) async => Left(Failure('invalid input')));
       //Act
       final result = await usecase(1);
 
       //Assert
-      expect(result, Left(FailureMessage('invalid input')));
+      expect(result, Left(Failure('invalid input')));
     });
   });
 }
