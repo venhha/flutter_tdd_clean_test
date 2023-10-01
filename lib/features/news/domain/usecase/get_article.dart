@@ -4,10 +4,10 @@ import 'package:flutter_tdd_clean_test/core/usecase/usecase.dart';
 import 'package:flutter_tdd_clean_test/features/news/domain/entities/article.dart';
 import 'package:flutter_tdd_clean_test/features/news/domain/repository/article_repository.dart';
 
-class GetArticle extends UseCase<List<ArticleEntity>, GetArticleParams> {
+class GetArticleUseCase extends UseCase<List<ArticleEntity>, GetArticleParams> {
   final ArticleRepository repository;
 
-  GetArticle(this.repository);
+  GetArticleUseCase(this.repository);
 
   @override
   Future<Either<Failure, List<ArticleEntity>>> call(

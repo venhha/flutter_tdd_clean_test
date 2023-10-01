@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_tdd_clean_test/core/error/exceptions.dart';
 import 'package:flutter_tdd_clean_test/core/error/failures.dart';
 import 'package:flutter_tdd_clean_test/core/network/network_info.dart';

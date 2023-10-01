@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_tdd_clean_test/features/news/domain/entities/article.dart';
 
 class ArticleModel extends ArticleEntity {
@@ -21,6 +23,19 @@ class ArticleModel extends ArticleEntity {
         publishedAt: json['publishedAt'] as String?,
         content: json['content'] as String?,
       );
+
+  factory ArticleModel.fromJsonStrMap(String strJson) {
+    Map<String, dynamic> mapJson = json.decode(strJson);
+    return ArticleModel(
+      author: mapJson['author'] as String?,
+      title: mapJson['title'] as String?,
+      description: mapJson['description'] as String?,
+      url: mapJson['url'] as String?,
+      urlToImage: mapJson['urlToImage'] as String?,
+      publishedAt: mapJson['publishedAt'] as String?,
+      content: mapJson['content'] as String?,
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         'author': author,

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_tdd_clean_test/features/news/data/data_sources/remote/news_remote_datasource.dart';
 import 'package:flutter_tdd_clean_test/features/news/data/models/article.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -16,7 +17,7 @@ void main() {
       //act
       final result =
           await remoteDateSource.getArticleModelsFromRemote(q: 'tesla');
-      // debugPrint(result.toString());
+      debugPrint(result.toString());
 
       //assert
       expect(result, isA<List<ArticleModel>>());

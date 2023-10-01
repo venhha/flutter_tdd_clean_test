@@ -21,6 +21,7 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
   ) : super(EmptyState()) {
     on<GetConcreteEvent>(
       (event, emit) async {
+        
         emit(LoadingState());
         final inputEither =
             _inputConvertor.stringToUnsignedInteger(event.numberString);

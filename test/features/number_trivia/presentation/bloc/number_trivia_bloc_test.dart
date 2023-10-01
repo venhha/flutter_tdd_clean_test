@@ -38,7 +38,7 @@ void main() {
     expect(bloc.state, equals(EmptyState()));
   });
 
-  group(NumberTriviaBloc, () {
+  group("NumberTriviaBloc", () {
     blocTest<NumberTriviaBloc, NumberTriviaState>(
       'should emit [LoadingState,LoadedState] when GetConcreteEvent is added',
       build: () {

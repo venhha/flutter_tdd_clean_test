@@ -3,6 +3,7 @@ import 'package:flutter_tdd_clean_test/features/news/data/data_sources/remote/ne
 import 'package:flutter_tdd_clean_test/features/news/data/repository/article_repository_impl.dart';
 import 'package:flutter_tdd_clean_test/features/news/domain/repository/article_repository.dart';
 import 'package:flutter_tdd_clean_test/features/news/domain/usecase/get_article.dart';
+import 'package:flutter_tdd_clean_test/features/news/presentation/bloc/news_bloc.dart';
 import 'core/helpers/input_convertor.dart';
 import 'core/network/network_info.dart';
 import 'features/number_trivia/data/data_sources/number_trivia_local_data_source.dart';
@@ -20,10 +21,11 @@ Future<void> initLocator() async {
   //! Features - Number Trivia
   // Bloc
   sl.registerFactory(() => NumberTriviaBloc(sl(), sl()));
+  sl.registerFactory(() => NewsBloc(sl()));
 
   // Use cases
   sl.registerLazySingleton(() => GetConcreteNumberTriviaUseCase(sl()));
-  sl.registerLazySingleton(() => GetArticle(sl()));
+  sl.registerLazySingleton(() => GetArticleUseCase(sl()));
 
   // Repository
   sl.registerLazySingleton<NumberTriviaRepository>(

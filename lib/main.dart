@@ -3,13 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tdd_clean_test/config/theme/app_themes.dart';
-import 'package:flutter_tdd_clean_test/features/news/presentation/pages/test_articles_page.dart';
+import 'package:flutter_tdd_clean_test/features/news/presentation/pages/news_homepage.dart';
+import 'package:flutter_tdd_clean_test/injection_container.dart';
 import 'package:flutter_tdd_clean_test/test/todo_sample.dart';
 
 void main() async {
-  // Initialize the binding before calling runApp().
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await initLocator();
+  WidgetsFlutterBinding.ensureInitialized();
+  await initLocator();
   runApp(const MyApp());
 }
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Number Trivia', theme: appTheme(), home: ArticleTestPage(),
+      title: 'Number Trivia', theme: appTheme(), home: NewsHomePage(),
       // routes: {
       //   '/numberTrivia': (context) => const NumberTriviaHomePage(),
       // },
